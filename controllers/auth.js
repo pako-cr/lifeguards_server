@@ -16,7 +16,7 @@ const signUp = async(request, response) => {
         if (!enabledUser) {
             return response.status(400).json({
                 ok: false,
-                msg: 'The user is not valid to sign up. Please try again with a valid email.'
+                errors: { 'error': { 'msg': 'The user is not valid to sign up. Please try again with a valid email. If the problem persist please contact the administrator.' } }
             })
         }
 
@@ -26,7 +26,7 @@ const signUp = async(request, response) => {
         if (userExist) {
             return response.status(400).json({
                 ok: false,
-                msg: 'The email is not valid. Please try again with a valid email.'
+                errors: { 'error': { 'msg': 'The email is not valid. Please try again with a valid email.' } }
             })
         }
 
@@ -55,7 +55,7 @@ const signUp = async(request, response) => {
         console.log(`❌  An error occurred: ${error}.`)
         response.status(500).json({
             ok: false,
-            msg: 'Unexpected error occurred. Please try again.'
+            errors: { 'error': { 'msg': 'Unexpected error occurred. Please try again.' } }
         })
     }
 }
@@ -69,7 +69,7 @@ const signIn = async(request, response) => {
         if (!userDB) {
             return response.status(404).json({
                 ok: false,
-                msg: 'The email is not valid. Please try again with a valid email.'
+                errors: { 'error': { 'msg': 'The email is not valid. Please try again with a valid email.' } }
             })
         }
 
@@ -79,7 +79,7 @@ const signIn = async(request, response) => {
         if (!validPassword) {
             return response.status(400).json({
                 ok: false,
-                msg: 'Invalid credentials.'
+                errors: { 'error': { 'msg': 'Invalid credentials.' } }
             })
         }
 
@@ -96,7 +96,7 @@ const signIn = async(request, response) => {
         console.log(`❌  An error occurred: ${error}.`)
         response.status(500).json({
             ok: false,
-            msg: 'Unexpected error occurred. Please try again.'
+            errors: { 'error': { 'msg': 'Unexpected error occurred. Please try again.' } }
         })
     }
 }
@@ -110,7 +110,7 @@ const renewToken = async(request, response) => {
         if (!userDB) {
             return response.status(404).json({
                 ok: false,
-                msg: 'The email is not valid. Please try again with a valid email.'
+                errors: { 'error': { 'msg': 'The email is not valid. Please try again with a valid email.' } }
             })
         }
 
@@ -128,7 +128,7 @@ const renewToken = async(request, response) => {
         console.log(`❌  An error occurred: ${error}.`)
         response.status(500).json({
             ok: false,
-            msg: 'Unexpected error occurred. Please try again.'
+            errors: { 'error': { 'msg': 'Unexpected error occurred. Please try again.' } }
         })
     }
 }
