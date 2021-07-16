@@ -16,7 +16,7 @@ const signUp = async(request, response) => {
         if (!enabledUser) {
             return response.status(400).json({
                 ok: false,
-                errors: { 'error': { 'msg': 'The user is not valid to sign up. Please try again with a valid email. If the problem persist please contact the administrator.' } }
+                errors: { 'error': { 'msg': 'The user is not valid to sign up. Please try again with a valid email. If the problem persist please contact the administrator.', } }
             })
         }
 
